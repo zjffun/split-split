@@ -1,0 +1,70 @@
+{
+  "name": "split-split",
+  "description": "Split string and keep separators.",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "esm/index.js",
+  "unpkg": "dist/index.min.js",
+  "jsdelivr": "dist/index.min.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "prepublishOnly": "npm run build && npm run test",
+    "build": "rimraf dist esm && tsc && rollup -c",
+    "test": "npm run test:node && npm run test:browser",
+    "test:node": "cross-env TS_NODE_PROJECT=tsconfig.test.json nyc --reporter=lcov mocha -r ts-node/register 'test/**/*.ts'",
+    "test:browser": "karma start --single-run",
+    "watch:css": "NODE_ENV=production tailwindcss -o tailwind.css --watch",
+    "build:css": "NODE_ENV=production tailwindcss -o tailwind.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zjffun/split-split.git"
+  },
+  "author": "zjffun",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "esm",
+    "src",
+    "index.d.ts"
+  ],
+  "bugs": {
+    "url": "https://github.com/zjffun/split-split/issues"
+  },
+  "homepage": "https://github.com/zjffun/split-split#readme",
+  "keywords": [],
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@tailwindcss/forms": "^0.3.4",
+    "@types/chai": "^4.2.19",
+    "@types/estree": "0.0.48",
+    "@types/mocha": "^8.2.2",
+    "@types/node": "^15.12.2",
+    "@types/nspell": "^2.1.0",
+    "autoprefixer": "^10.4.0",
+    "chai": "^4.3.4",
+    "codecov": "^3.8.2",
+    "cross-env": "^7.0.3",
+    "karma": "^6.3.4",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^2.1.1",
+    "karma-mocha": "^2.0.1",
+    "karma-typescript": "^5.5.1",
+    "karma-webpack": "^5.0.0",
+    "mocha": "^9.0.1",
+    "nyc": "^15.1.0",
+    "postcss": "^8.3.11",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.52.1",
+    "rollup-plugin-uglify": "^6.0.4",
+    "tailwindcss": "^2.2.19",
+    "ts-loader": "^9.2.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2",
+    "webpack": "^5.40.0"
+  }
+}

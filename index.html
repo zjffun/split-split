@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>split-split</title>
+    <link href="./tailwind.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="flex items-center justify-center py-6 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-screen-lg w-full space-y-8">
+        <h1 class="text-4xl">split-split</h1>
+        <div id="vue-split-split-app">
+          <div class="my-4">
+            <label
+              for="splitingStr"
+              class="block text-sm font-medium text-gray-700"
+            >
+              String
+            </label>
+            <div class="mt-1">
+              <textarea
+                id="splitingStr"
+                rows="3"
+                class="
+                  shadow-sm
+                  focus:ring-indigo-500 focus:border-indigo-500
+                  mt-1
+                  block
+                  w-full
+                  sm:text-sm
+                  border border-gray-300
+                  rounded-md
+                "
+                placeholder="String to be split"
+                v-model="splitingStr"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="my-4">
+            <label class="block text-sm font-medium text-gray-700">
+              Separator
+            </label>
+            <div class="flex items-center">
+              <div v-for="t in types" class="flex items-center mr-4">
+                <input
+                  :id="t.value"
+                  :value="t.value"
+                  type="radio"
+                  class="
+                    focus:ring-indigo-500
+                    h-4
+                    w-4
+                    text-indigo-600
+                    border-gray-300
+                  "
+                  v-model="separatorType"
+                />
+                <label
+                  :for="t.value"
+                  class="ml-3 block text-sm font-medium text-gray-700"
+                >
+                  {{t.label}}
+                </label>
+              </div>
+            </div>
+            <div v-if="separatorType === 'array'">
+              <div class="mt-1 flex flex-wrap items-start">
+                <input
+                  type="text"
+                  class="
+                    w-24
+                    inline-block
+                    focus:ring-indigo-500 focus:border-indigo-500
+                    block
+                    rounded-none rounded-l-md
+                    sm:text-sm
+                    border-gray-300
+                  "
+                  placeholder=""
+                  v-model="separatorStr"
+                />
+                <button
+                  class="
+                    mr-2
+                    py-2
+                    px-4
+                    inline-block
+                    border border-transparent
+                    shadow-sm
+                    text-sm
+                    font-medium
+                    rounded-r-md
+                    text-white
+                    bg-indigo-600
+                    hover:bg-indigo-700
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-offset-2
+                    focus:ring-indigo-500
+                  "
+                  v-show="separatorType === 'array'"
+                  @click="addSeparator"
+                >
+                  Add
+                </button>
+                <span v-for="s in separatorArray">
+                  <span
+                    class="
+                      mx-1
+                      mb-2
+                      py-2
+                      px-4
+                      inline-block
+                      text-xs
+                      leading-5
+                      font-semibold
+                      rounded-full
+                      bg-indigo-100
+                      text-indigo-800
+                    "
+                  >
+                    {{s}}
+                    <button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        class="inline-block w-4 h-4 stroke-current"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M6 18L18 6M6 6l12 12"
+                        ></path>
+                      </svg>
+                    </button>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div
+              v-else-if="separatorType === 'regexp'"
+              class="col-span-3 sm:col-span-2"
+            >
+              <div class="mt-1 flex rounded-md shadow-sm">
+                <span
+                  class="
+                    inline-flex
+                    items-center
+                    px-3
+                    rounded-l-md
+                    border border-r-0 border-gray-300
+                    bg-gray-50
+                    text-gray-500 text-sm
+                  "
+                >
+                  /
+                </span>
+                <input
+                  type="text"
+                  name="company-website"
+                  id="company-website"
+                  class="
+                    focus:ring-indigo-500 focus:border-indigo-500
+                    flex-1
+                    block
+                    w-full
+                    rounded-none
+                    sm:text-sm
+                    border-gray-300
+                  "
+                  v-model="separatorStr"
+                />
+                <span
+                  class="
+                    inline-flex
+                    items-center
+                    px-3
+                    rounded-r-md
+                    border border-l-0 border-gray-300
+                    bg-gray-50
+                    text-gray-500 text-sm
+                  "
+                >
+                  /
+                </span>
+              </div>
+            </div>
+            <div
+              v-else-if="separatorType === 'regexp'"
+              class="col-span-3 sm:col-span-2"
+            >
+              Invalid separator type.
+            </div>
+          </div>
+
+          <button
+            class="
+              inline-flex
+              justify-center
+              py-2
+              px-4
+              border border-transparent
+              shadow-sm
+              text-sm
+              font-medium
+              rounded-md
+              text-white
+              bg-indigo-600
+              hover:bg-indigo-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
+            "
+            @click="split"
+          >
+            split(String, Separator)
+          </button>
+
+          <div class="my-4">
+            <label
+              for="substringsStr"
+              class="block text-sm font-medium text-gray-700"
+            >
+              SubStrings
+            </label>
+            <div class="mt-1">
+              <textarea
+                id="substringsStr"
+                rows="3"
+                class="
+                  shadow-sm
+                  focus:ring-indigo-500 focus:border-indigo-500
+                  mt-1
+                  block
+                  w-full
+                  sm:text-sm
+                  border border-gray-300
+                  rounded-md
+                "
+                placeholder="spliting string"
+                v-model="substringsStr"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="my-4">
+            <label
+              for="separators"
+              class="block text-sm font-medium text-gray-700"
+            >
+              Separators
+            </label>
+            <div class="mt-1">
+              <textarea
+                id="separators"
+                rows="3"
+                class="
+                  shadow-sm
+                  focus:ring-indigo-500 focus:border-indigo-500
+                  mt-1
+                  block
+                  w-full
+                  sm:text-sm
+                  border border-gray-300
+                  rounded-md
+                "
+                placeholder="spliting string"
+                v-model="separatorsStr"
+              ></textarea>
+            </div>
+          </div>
+
+          <button
+            class="
+              inline-flex
+              justify-center
+              py-2
+              px-4
+              border border-transparent
+              shadow-sm
+              text-sm
+              font-medium
+              rounded-md
+              text-white
+              bg-indigo-600
+              hover:bg-indigo-700
+              focus:outline-none
+              focus:ring-2
+              focus:ring-offset-2
+              focus:ring-indigo-500
+            "
+            @click="join"
+          >
+            join(SubStrings, Separators)
+          </button>
+
+          <div class="my-4">
+            <label
+              for="joinResult"
+              class="block text-sm font-medium text-gray-700"
+            >
+              Join Result
+            </label>
+            <div class="mt-1">
+              <textarea
+                id="joinResult"
+                rows="3"
+                class="
+                  shadow-sm
+                  focus:ring-indigo-500 focus:border-indigo-500
+                  mt-1
+                  block
+                  w-full
+                  sm:text-sm
+                  border border-gray-300
+                  rounded-md
+                "
+                placeholder="spliting string"
+                v-model="joinResult"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="//cdn.jsdelivr.net/npm/vue@3.2.21/dist/vue.global.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/split-split"></script>
+
+    <script>
+      const { split, join } = splitSplit;
+
+      const VueSplitSplitApp = {
+        methods: {
+          split() {
+            let substrings, separators;
+
+            switch (this.separatorType) {
+              case "array":
+                [substrings, separators] = split(
+                  this.splitingStr,
+                  this.separatorArray
+                );
+                break;
+
+              case "regexp":
+                [substrings, separators] = split(
+                  this.splitingStr,
+                  new RegExp(this.separatorStr)
+                );
+                break;
+
+              default:
+                substrings = [];
+                separators = [];
+                break;
+            }
+
+            this.substringsStr = JSON.stringify(substrings);
+            this.separatorsStr = JSON.stringify(separators);
+          },
+          join() {
+            try {
+              this.joinResult = join(
+                JSON.parse(this.substringsStr),
+                JSON.parse(this.separatorsStr)
+              );
+            } catch (error) {
+              this.joinResult = error.message;
+            }
+          },
+          addSeparator() {
+            this.separatorArray.push(this.separatorStr);
+            this.separatorStr = "";
+          },
+        },
+        data() {
+          return {
+            types: [
+              {
+                label: "Array",
+                value: "array",
+              },
+              {
+                label: "RegExp",
+                value: "regexp",
+              },
+            ],
+            separatorArray: [],
+            separatorStr: "",
+            splitingStr: "",
+            substringsStr: "",
+            separatorsStr: "",
+            joinResult: "",
+            separatorType: "array",
+          };
+        },
+      };
+
+      const app = Vue.createApp(VueSplitSplitApp);
+
+      app.mount("#vue-split-split-app");
+    </script>
+  </body>
+</html>
