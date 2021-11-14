@@ -8,9 +8,9 @@
   "jsdelivr": "dist/index.min.js",
   "types": "index.d.ts",
   "scripts": {
-    "prepublishOnly": "npm run build && npm run test",
+    "prepublishOnly": "yarn build && yarn test",
     "build": "rimraf dist esm && tsc && rollup -c",
-    "test": "npm run test:node && npm run test:browser",
+    "test": "yarn test:node && yarn test:browser",
     "test:node": "cross-env TS_NODE_PROJECT=tsconfig.test.json nyc --reporter=lcov mocha -r ts-node/register 'test/**/*.ts'",
     "test:browser": "karma start --single-run",
     "watch:css": "NODE_ENV=production tailwindcss -o tailwind.css --watch",
