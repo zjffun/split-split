@@ -1,1 +1,1 @@
-export { default as default } from "./esm/index.d";
+export * from "./esm/index.d";

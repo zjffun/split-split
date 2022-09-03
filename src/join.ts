@@ -1,4 +1,4 @@
-export default (substrings, separators) => {
+export default (substrings: string[], separators: string[] | string) => {
   if (Array.isArray(separators)) {
     let result = "";
     for (let i = 0; i < substrings.length - 1; i++) {
