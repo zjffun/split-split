@@ -1,7 +1,7 @@
 {
   "name": "split-split",
   "description": "Split string and keep separators.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "module": "esm/index.js",
   "unpkg": "dist/index.min.js",
