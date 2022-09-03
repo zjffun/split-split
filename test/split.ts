@@ -3,13 +3,13 @@ import { split } from "../src/index";
 
 describe("split", () => {
   it("throw error if separator is invalid", () => {
-    // @ts-ignore
-    expect(() => split("")).to.throw();
-    expect(() => split("", "")).to.throw();
-    expect(() => split("", 1)).to.throw();
-    expect(() => split("", null)).to.throw();
-    expect(() => split("", {})).to.throw();
-    expect(() => split("", true)).to.throw();
+    const splitTsAny = split as any;
+    expect(() => splitTsAny("")).to.throw();
+    expect(() => splitTsAny("", "")).to.throw();
+    expect(() => splitTsAny("", 1)).to.throw();
+    expect(() => splitTsAny("", null)).to.throw();
+    expect(() => splitTsAny("", {})).to.throw();
+    expect(() => splitTsAny("", true)).to.throw();
   });
 
   it("regexp multiple separators", () => {

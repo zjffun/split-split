@@ -8,7 +8,8 @@ class _String {
   }
 
   split(re) {
-    return split(this.str, re);
+    const splitTsAny = split as any;
+    return splitTsAny(this.str, re);
   }
 }
 

@@ -25,7 +25,7 @@ export default (separator: Array<string> | RegExp) => {
     throw Error("Invalid separator, separator must be Array or RegExp");
   }
 
-  return (str) => {
+  return (str): [string[], string[]] => {
     const matchResult = str.matchAll(_separator);
     let lastEnd = 0;
     const arr0 = [];
