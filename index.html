@@ -23,16 +23,7 @@
               <textarea
                 id="splitingStr"
                 rows="3"
-                class="
-                  shadow-sm
-                  focus:ring-indigo-500 focus:border-indigo-500
-                  mt-1
-                  block
-                  w-full
-                  sm:text-sm
-                  border border-gray-300
-                  rounded-md
-                "
+                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                 placeholder="String to be split"
                 v-model="splitingStr"
               ></textarea>
@@ -49,13 +40,7 @@
                   :id="t.value"
                   :value="t.value"
                   type="radio"
-                  class="
-                    focus:ring-indigo-500
-                    h-4
-                    w-4
-                    text-indigo-600
-                    border-gray-300
-                  "
+                  class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300"
                   v-model="separatorType"
                 />
                 <label
@@ -70,60 +55,23 @@
               <div class="mt-1 flex flex-wrap items-start">
                 <input
                   type="text"
-                  class="
-                    w-24
-                    inline-block
-                    focus:ring-indigo-500 focus:border-indigo-500
-                    block
-                    rounded-none rounded-l-md
-                    sm:text-sm
-                    border-gray-300
-                  "
+                  class="w-24 inline-block focus:ring-indigo-500 focus:border-indigo-500 block rounded-none rounded-l-md sm:text-sm border-gray-300"
                   placeholder=""
                   v-model="separatorStr"
                 />
                 <button
-                  class="
-                    mr-2
-                    py-2
-                    px-4
-                    inline-block
-                    border border-transparent
-                    shadow-sm
-                    text-sm
-                    font-medium
-                    rounded-r-md
-                    text-white
-                    bg-indigo-600
-                    hover:bg-indigo-700
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-offset-2
-                    focus:ring-indigo-500
-                  "
+                  class="mr-2 py-2 px-4 inline-block border border-transparent shadow-sm text-sm font-medium rounded-r-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   v-show="separatorType === 'array'"
                   @click="addSeparator"
                 >
                   Add
                 </button>
-                <span v-for="s in separatorArray">
+                <span v-for="(s, i) in separatorArray">
                   <span
-                    class="
-                      mx-1
-                      mb-2
-                      py-2
-                      px-4
-                      inline-block
-                      text-xs
-                      leading-5
-                      font-semibold
-                      rounded-full
-                      bg-indigo-100
-                      text-indigo-800
-                    "
+                    class="mx-1 mb-2 py-2 px-4 inline-block text-xs leading-5 font-semibold rounded-full bg-indigo-100 text-indigo-800"
                   >
                     {{s}}
-                    <button>
+                    <button @click="removeSeparator(i)">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -148,15 +96,7 @@
             >
               <div class="mt-1 flex rounded-md shadow-sm">
                 <span
-                  class="
-                    inline-flex
-                    items-center
-                    px-3
-                    rounded-l-md
-                    border border-r-0 border-gray-300
-                    bg-gray-50
-                    text-gray-500 text-sm
-                  "
+                  class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"
                 >
                   /
                 </span>
@@ -164,27 +104,11 @@
                   type="text"
                   name="company-website"
                   id="company-website"
-                  class="
-                    focus:ring-indigo-500 focus:border-indigo-500
-                    flex-1
-                    block
-                    w-full
-                    rounded-none
-                    sm:text-sm
-                    border-gray-300
-                  "
+                  class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none sm:text-sm border-gray-300"
                   v-model="separatorStr"
                 />
                 <span
-                  class="
-                    inline-flex
-                    items-center
-                    px-3
-                    rounded-r-md
-                    border border-l-0 border-gray-300
-                    bg-gray-50
-                    text-gray-500 text-sm
-                  "
+                  class="inline-flex items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"
                 >
                   /
                 </span>
@@ -199,24 +123,7 @@
           </div>
 
           <button
-            class="
-              inline-flex
-              justify-center
-              py-2
-              px-4
-              border border-transparent
-              shadow-sm
-              text-sm
-              font-medium
-              rounded-md
-              text-white
-              bg-indigo-600
-              hover:bg-indigo-700
-              focus:outline-none
-              focus:ring-2
-              focus:ring-offset-2
-              focus:ring-indigo-500
-            "
+            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             @click="split"
           >
             split(String, Separator)
@@ -233,16 +140,7 @@
               <textarea
                 id="substringsStr"
                 rows="3"
-                class="
-                  shadow-sm
-                  focus:ring-indigo-500 focus:border-indigo-500
-                  mt-1
-                  block
-                  w-full
-                  sm:text-sm
-                  border border-gray-300
-                  rounded-md
-                "
+                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                 placeholder="spliting string"
                 v-model="substringsStr"
               ></textarea>
@@ -260,16 +158,7 @@
               <textarea
                 id="separators"
                 rows="3"
-                class="
-                  shadow-sm
-                  focus:ring-indigo-500 focus:border-indigo-500
-                  mt-1
-                  block
-                  w-full
-                  sm:text-sm
-                  border border-gray-300
-                  rounded-md
-                "
+                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                 placeholder="spliting string"
                 v-model="separatorsStr"
               ></textarea>
@@ -277,24 +166,7 @@
           </div>
 
           <button
-            class="
-              inline-flex
-              justify-center
-              py-2
-              px-4
-              border border-transparent
-              shadow-sm
-              text-sm
-              font-medium
-              rounded-md
-              text-white
-              bg-indigo-600
-              hover:bg-indigo-700
-              focus:outline-none
-              focus:ring-2
-              focus:ring-offset-2
-              focus:ring-indigo-500
-            "
+            class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             @click="join"
           >
             join(SubStrings, Separators)
@@ -311,16 +183,7 @@
               <textarea
                 id="joinResult"
                 rows="3"
-                class="
-                  shadow-sm
-                  focus:ring-indigo-500 focus:border-indigo-500
-                  mt-1
-                  block
-                  w-full
-                  sm:text-sm
-                  border border-gray-300
-                  rounded-md
-                "
+                class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                 placeholder="spliting string"
                 v-model="joinResult"
               ></textarea>
@@ -379,6 +242,13 @@
             this.separatorArray.push(this.separatorStr);
             this.separatorStr = "";
           },
+          removeSeparator(index) {
+            this.separatorArray.splice(index, 1);
+          },
+        },
+        mounted() {
+          this.split();
+          this.join();
         },
         data() {
           return {
@@ -392,9 +262,9 @@
                 value: "regexp",
               },
             ],
-            separatorArray: [],
+            separatorArray: [",", "@", "|"],
             separatorStr: "",
-            splitingStr: "",
+            splitingStr: "split,split@split|split",
             substringsStr: "",
             separatorsStr: "",
             joinResult: "",
