@@ -1,6 +1,5 @@
 [![jsdelivr][jsdelivr-badge]][jsdelivr-link]
 [![npm version][fury-badge]][fury-link]
-[![test CI][test-badge]][test-link]
 [![codecov][codecov-badge]][codecov-link]
 
 # [split-split][split-split]
@@ -50,7 +49,7 @@ console.log(str); // => "split split\tsplit|split"
 CDN:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/split-split"></script>
+<script src="https://cdn.jsdelivr.net/npm/split-split@0.0.2"></script>
 <script>
   const { split, join } = splitSplit;
 
@@ -136,7 +135,5 @@ A string consisting of the separators inserted into the substrings.
 [fury-badge]: https://badge.fury.io/js/split-split.svg
 [jsdelivr-link]: https://www.jsdelivr.com/package/npm/split-split
 [jsdelivr-badge]: https://data.jsdelivr.com/v1/package/npm/split-split/badge
-[test-badge]: https://github.com/zjffun/split-split/workflows/test%20CI/badge.svg
-[test-link]: https://github.com/zjffun/split-split/actions
 [codecov-badge]: https://codecov.io/gh/zjffun/split-split/branch/main/graph/badge.svg
 [codecov-link]: https://codecov.io/gh/zjffun/split-split
