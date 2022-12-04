@@ -114,19 +114,7 @@ console.log(string); // => "split split\tsplit|split"
 
 A string consisting of the separators inserted into the substrings.
 
-## Release Notes
-
-### [TODO]
-
-### [Unreleased]
-
-### v0.0.2
-
-- Fix typescript exports.
-
-### v0.0.1
-
-- Added features split and join.
+## [Release Notes](./CHANGELOG.md)
 
 <!-- Definitions -->
 
